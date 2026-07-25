@@ -1,6 +1,7 @@
 import { contact, services } from "../data";
 import GalleryRoutePreview from "./GalleryRoutePreview";
 import PageNav from "./PageNav";
+import SafeImage from "./SafeImage";
 
 const routeIcons = {
   calendar: (
@@ -51,7 +52,7 @@ export default function RoutePage({ page }) {
       <PageNav />
       <main className="route-page">
         <section className="route-hero">
-          <img src={page.image} alt={`${page.title} visual`} />
+          <SafeImage src={page.image} alt={`${page.title} visual`} loading="eager" />
           <div>
             <p className="eyebrow">{page.eyebrow}</p>
             <h1>{page.title}</h1>
@@ -82,7 +83,7 @@ export default function RoutePage({ page }) {
           <section className="route-card-grid">
             {cards.map((card) => (
               <article key={card.title || card.name}>
-                {card.image ? <img src={card.image} alt={`${card.title} visual`} /> : null}
+                {card.image ? <SafeImage src={card.image} alt={`${card.title} visual`} /> : null}
                 <span>{card.category || card.event || "Venus"}</span>
                 <h2>{card.title || card.name}</h2>
                 <p>{card.description || card.quote}</p>
@@ -104,10 +105,10 @@ export default function RoutePage({ page }) {
 
         <section className="route-highlight">
           <p className="eyebrow">Signature details</p>
-          <h2>Designed with balance, mood and guest experience in mind</h2>
+          <h2>Designed with protocol, flow and presentation quality in mind</h2>
           <p>
-            Every Venus concept is shaped around venue scale, color palette, lighting, floral density, camera angles
-            and comfortable guest movement. The result is decor that feels premium in person and refined in photographs.
+            Every Venus setup is shaped around venue scale, stage visibility, technical needs, branding, audience flow
+            and dignified presentation. The result is an event surface that feels prepared, premium and dependable.
           </p>
           <div className="pill-cloud">
             {services.slice(0, 6).map((service) => (
@@ -119,8 +120,8 @@ export default function RoutePage({ page }) {
         <section className="cta route-cta">
           <div>
             <p className="eyebrow">Plan your event</p>
-            <h2>Let's Create Something Beautiful Together</h2>
-            <p>Call, WhatsApp or send a consultation request for weddings, celebrations and corporate events.</p>
+            <h2>Let's Build a Clear Production Plan</h2>
+            <p>Call, WhatsApp or send a consultation request for corporate, exhibition, institutional or religious events.</p>
           </div>
           <div className="cta-actions">
             <a className="button button-gold" href={whatsappUrl()}>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   categories,
@@ -15,14 +16,15 @@ import {
   stats,
   testimonials,
 } from "../data";
+import SafeImage from "./SafeImage";
 
-const categoryFilters = ["All", "Wedding", "Reception", "Haldi", "Corporate", "Theme Events", "Engagement"];
+const categoryFilters = ["All", "Corporate", "Exhibition", "Religious", "Launch", "Institutional", "Ceremony"];
 
 const heroSlides = [
-  { label: "Luxury Wedding", image: imageBank.hero },
-  { label: "Reception Styling", image: imageBank.reception },
-  { label: "Floral Decor", image: imageBank.floral },
-  { label: "Corporate Stage", image: imageBank.conference },
+  { label: "Corporate Events", image: imageBank.heroCorporate },
+  { label: "Exhibitions", image: imageBank.heroExhibition },
+  { label: "Religious Events", image: imageBank.heroReligious },
+  { label: "Institutional Programs", image: imageBank.heroInstitutional },
 ];
 
 const iconPaths = {
@@ -53,6 +55,16 @@ const iconPaths = {
       <path d="M3 12h18" />
     </>
   ),
+  building: (
+    <>
+      <rect x="4" y="3" width="16" height="18" rx="2" />
+      <path d="M9 8h1" />
+      <path d="M14 8h1" />
+      <path d="M9 12h1" />
+      <path d="M14 12h1" />
+      <path d="M10 21v-4h4v4" />
+    </>
+  ),
   clock: (
     <>
       <circle cx="12" cy="12" r="9" />
@@ -66,6 +78,12 @@ const iconPaths = {
       <path d="M12 16.5c1.4 2.6 4.7 2.6 5.6.4.9-2.2-1.4-4.5-4.1-3.7" />
       <path d="M12 16.5c-1.4 2.6-4.7 2.6-5.6.4-.9-2.2 1.4-4.5 4.1-3.7" />
       <circle cx="12" cy="12" r="2.2" />
+    </>
+  ),
+  flag: (
+    <>
+      <path d="M5 22V3" />
+      <path d="M5 4h12l-1.5 4L17 12H5" />
     </>
   ),
   gift: (
@@ -93,6 +111,40 @@ const iconPaths = {
     <>
       <rect x="3" y="5" width="18" height="14" rx="2" />
       <path d="m3 7 9 6 9-6" />
+    </>
+  ),
+  mic: (
+    <>
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0" />
+      <path d="M12 18v4" />
+      <path d="M8 22h8" />
+    </>
+  ),
+  award: (
+    <>
+      <circle cx="12" cy="8" r="5" />
+      <path d="m8.5 12.5-1.2 8 4.7-2.7 4.7 2.7-1.2-8" />
+    </>
+  ),
+  school: (
+    <>
+      <path d="m3 10 9-6 9 6" />
+      <path d="M5 10v9h14v-9" />
+      <path d="M9 19v-5h6v5" />
+    </>
+  ),
+  music: (
+    <>
+      <path d="M9 18V5l10-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="16" cy="16" r="3" />
+    </>
+  ),
+  book: (
+    <>
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+      <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15Z" />
     </>
   ),
   mapPin: (
@@ -323,19 +375,19 @@ function Navbar() {
 
   return (
     <header className={`site-nav ${scrolled ? "is-scrolled" : ""}`}>
-      <a className="brand" href="/" aria-label="Venus Event & Decor home">
+      <Link className="brand" href="/" aria-label="Venus Event & Decor home">
         <span>V</span>
         <div>
           <strong>Venus</strong>
           <small>Event & Decor</small>
         </div>
-      </a>
+      </Link>
 
       <nav className={`nav-links ${open ? "is-open" : ""}`} aria-label="Primary navigation">
         {navItems.map((item) => (
-          <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+          <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
             {item.label}
-          </a>
+          </Link>
         ))}
       </nav>
 
@@ -386,11 +438,12 @@ function Hero() {
     <section className="hero" id="home">
       <div className="hero-slideshow" aria-hidden="true">
         {heroSlides.map((slide, index) => (
-          <img
+          <SafeImage
             className={`hero-image ${index === activeSlide ? "is-active" : ""}`}
             key={slide.label}
             src={slide.image}
             alt=""
+            loading={index === 0 ? "eager" : "lazy"}
           />
         ))}
       </div>
@@ -398,28 +451,28 @@ function Hero() {
       <div className="hero-light hero-light-one" />
       <div className="hero-light hero-light-two" />
       <div className="hero-content reveal">
-        <p className="eyebrow">Luxury event production house - Indore</p>
+        <p className="eyebrow">Professional event production house - Indore</p>
         <h1>
-          We Create.
-          <span>You Celebrate.</span>
+          We Plan.
+          <span>We Produce.</span>
         </h1>
         <p className="hero-subtitle">{contact.secondaryTagline}</p>
         <p className="hero-copy">
-          Venus Event & Decor designs unforgettable weddings, celebrations, corporate productions and branded
-          experiences with cinematic styling, refined lighting and calm on-ground execution in Indore and beyond.
+          Venus Event & Decor produces corporate events, exhibitions, Bhagwat and religious programs, conferences,
+          product launches, award functions and institutional events with structured planning and disciplined execution.
         </p>
         <div className="hero-actions">
           <a className="button button-gold magnetic" href="#contact">
             <Icon name="calendar" />
-            Book Consultation
+            Request Event Brief
           </a>
           <a className="button button-ghost" href="#portfolio">
             <Icon name="sparkle" />
-            Explore Our Work
+            Explore Production Work
           </a>
           <a className="button button-text" href="#videos">
             <Icon name="play" />
-            Watch Event Reel
+            Watch Production Reel
           </a>
         </div>
       </div>
@@ -438,7 +491,7 @@ function Hero() {
         ))}
       </div>
       <div className="hero-badge">
-        <span>Premium Decor</span>
+        <span>Event Production</span>
         <strong>Indore</strong>
       </div>
       <a className="scroll-cue" href="#about" aria-label="Scroll to about section">
@@ -470,29 +523,29 @@ function About() {
   return (
     <section className="section about" id="about">
       <div className="about-collage">
-        <img src={imageBank.reception} alt="Elegant reception table decor" />
-        <img src={imageBank.floral} alt="Premium floral decor detail" />
+        <SafeImage src={imageBank.aboutPlanning} alt="Corporate event planning session" />
+        <SafeImage src={imageBank.aboutExecution} alt="Professional conference execution" />
         <div className="collage-note">
-          <span>Creative Direction</span>
-          <strong>Luxury - Elegance - Perfection</strong>
+          <span>Production Direction</span>
+          <strong>Planning - Protocol - Precision</strong>
         </div>
       </div>
       <div className="about-copy">
         <p className="eyebrow">About Venus Event & Decor</p>
-        <h2>Designing celebrations that feel cinematic, personal and beautifully controlled.</h2>
+        <h2>Producing professional and spiritual events with structure, dignity and visual clarity.</h2>
         <p>
-          Venus Event & Decor is positioned as a premium event decor studio and production partner for weddings,
-          social celebrations and corporate experiences. Every concept is shaped through mood, movement, material,
-          lighting and guest flow so the event feels complete from the first arrival to the final photograph.
+          Venus Event & Decor is positioned as a production partner for organizations, institutions, brands and
+          religious committees. Every event surface is shaped around stage visibility, audience flow, technical
+          readiness, branding, protocol and a premium finish.
         </p>
         <div className="values-grid">
-          {["Creativity", "Execution", "Perfection", "Professional Team"].map((value) => (
+          {["Planning", "Execution", "Protocol", "Professional Team"].map((value) => (
             <span key={value}>{value}</span>
           ))}
         </div>
-        <a className="button button-ghost" href="/about">
+        <Link className="button button-ghost" href="/about">
           Discover Our Story
-        </a>
+        </Link>
       </div>
     </section>
   );
@@ -503,14 +556,19 @@ function Services() {
     <section className="section" id="services">
       <SectionHeading
         eyebrow="Our expertise"
-        title="Premium decor and production services"
-        text="Complete decor concepts for wedding rituals, corporate stages, theme environments and private celebrations."
+        title="Premium event production services"
+        text="Complete production support for corporate events, exhibitions, religious programs, institutional functions and formal public gatherings."
       />
       <div className="service-grid">
-        {services.map((service) => (
-          <article className="service-card" key={service.title}>
+        {services.map((service, index) => (
+          <article
+            className={`service-card service-card-${index + 1}`}
+            data-layout={service.layout}
+            key={service.title}
+            style={{ "--service-accent": service.accent }}
+          >
             <div className="service-card-media">
-              <img src={service.image} alt={`${service.title} inspiration`} />
+              <SafeImage src={service.image} alt={`${service.title} inspiration`} />
             </div>
             <div className="service-card-body">
               <span className="icon-badge">
@@ -518,10 +576,10 @@ function Services() {
               </span>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <a className="card-link" href="/services">
+              <Link className="card-link" href="/services">
                 Explore Service
                 <Icon name="arrowRight" />
-              </a>
+              </Link>
             </div>
           </article>
         ))}
@@ -535,8 +593,8 @@ function WhyChoose() {
     <section className="section why">
       <SectionHeading
         eyebrow="Why choose Venus"
-        title="A calm production partner for high-emotion days"
-        text="The site positions Venus as creative, premium and operationally dependable without overclaiming awards or unverifiable facts."
+        title="A reliable production partner for public-facing events"
+        text="The site positions Venus as structured, premium and operationally dependable for professional and spiritual event formats."
       />
       <div className="feature-grid">
         {features.map(([title, text]) => (
@@ -571,8 +629,8 @@ function Portfolio() {
     <section className="section portfolio" id="portfolio">
       <SectionHeading
         eyebrow="Portfolio showcase"
-        title="Editorial stories for every celebration"
-        text="A polished collection of wedding, reception, ritual, corporate and theme-event concepts for a premium Indore decor studio."
+        title="Professional event production examples"
+        text="A focused collection of corporate stages, exhibition layouts, religious program setups, institutional events and launch environments."
       />
       <div className="filter-row" role="tablist" aria-label="Portfolio filters">
         {categoryFilters.map((category) => (
@@ -594,7 +652,7 @@ function Portfolio() {
             key={item.title}
             onClick={() => setActive(item)}
           >
-            <img src={item.image} alt={`${item.title} event decor`} />
+            <SafeImage src={item.image} alt={`${item.title} event production`} />
             <span>{item.category}</span>
             <h3>{item.title}</h3>
             <p>{item.location}</p>
@@ -607,14 +665,14 @@ function Portfolio() {
           <button className="lightbox-close" type="button" onClick={() => setActive(null)} aria-label="Close project">
             Close
           </button>
-          <img src={active.image} alt={`${active.title} expanded view`} />
+          <SafeImage src={active.image} alt={`${active.title} expanded view`} />
           <div>
             <p className="eyebrow">{active.category}</p>
             <h3>{active.title}</h3>
             <p>{active.description}</p>
-            <a className="button button-gold" href="/event-details">
+            <Link className="button button-gold" href="/event-details">
               View Detail Page
-            </a>
+            </Link>
           </div>
         </div>
       ) : null}
@@ -629,14 +687,14 @@ function CategorySlider() {
   return (
     <section className="section category-slider" aria-label="Interactive event categories">
       <div className="category-stage">
-        <img src={active.image} alt={`${active.title} event category`} />
+        <SafeImage src={active.image} alt={`${active.title} event category`} />
         <div>
           <p className="eyebrow">Event categories</p>
           <h2>{active.title}</h2>
           <p>{active.text}</p>
-          <a className="button button-ghost" href="/services">
+          <Link className="button button-ghost" href="/services">
             Explore Category
-          </a>
+          </Link>
         </div>
       </div>
       <div className="slider-controls" aria-label="Category slider controls">
@@ -669,13 +727,13 @@ function Corporate() {
 
   return (
     <section className="section corporate" id="corporate">
-      <img src={imageBank.conference} alt="Corporate conference production setup" />
+      <SafeImage src={imageBank.routeCorporate} alt="Professional corporate event production setup" />
       <div>
-        <p className="eyebrow">Corporate events</p>
-        <h2>Production discipline for brands, teams and launch moments.</h2>
+        <p className="eyebrow">Professional event production</p>
+        <h2>Production discipline for brands, institutions and religious committees.</h2>
         <p>
-          Corporate experiences need more than decor. Venus can support branded environments, stage direction,
-          registration flow, lighting, sound, reveal moments and executive-ready presentation spaces.
+          Formal events need precise planning. Venus can support branded environments, exhibition areas, devotional
+          stages, registration flow, lighting, sound, reveal moments and audience-ready presentation spaces.
         </p>
         <div className="pill-cloud">
           {items.map((item) => (
@@ -684,7 +742,7 @@ function Corporate() {
         </div>
         <a className="button button-gold" href="#contact">
           <Icon name="calendar" />
-          Request Corporate Consultation
+          Request Production Consultation
         </a>
       </div>
     </section>
@@ -696,8 +754,8 @@ function Process() {
     <section className="section process" id="process">
       <SectionHeading
         eyebrow="Planning process"
-        title="From first brief to memories forever"
-        text="A clear timeline helps visitors understand the level of planning behind the final celebration."
+        title="From first brief to event handover"
+        text="A clear production process helps organizations, institutions and committees understand what happens before event day."
       />
       <div className="process-line">
         {process.map(([number, title, text]) => (
@@ -719,13 +777,13 @@ function BeforeAfter() {
     <section className="section compare-section">
       <SectionHeading
         eyebrow="Before and after"
-        title="Transformation storytelling"
-        text="A draggable comparison surface for venue transformations, installations and project details."
+        title="Production transformation view"
+        text="A draggable comparison surface for venue readiness, stage setup, branding and installation progress."
       />
       <div className="comparison">
-        <img src={imageBank.table} alt="Before styling concept" />
+        <SafeImage src={imageBank.compareBefore} alt="Before professional event setup" />
         <div className="comparison-after" style={{ width: `${value}%` }}>
-          <img src={imageBank.reception} alt="After luxury reception decor" />
+          <SafeImage src={imageBank.compareAfter} alt="After professional conference setup" />
         </div>
         <span className="label-before">Before</span>
         <span className="label-after">After</span>
@@ -745,9 +803,9 @@ function BeforeAfter() {
 function Videos() {
   const [open, setOpen] = useState(false);
   const videos = [
-    ["Wedding Highlight", imageBank.mandap],
-    ["Corporate Reveal", imageBank.conference],
-    ["Decor Timelapse", imageBank.stage],
+    ["Conference Highlight", imageBank.videoConference],
+    ["Exhibition Walkthrough", imageBank.videoExpo],
+    ["Religious Program Setup", imageBank.videoSpiritual],
   ];
 
   return (
@@ -755,12 +813,12 @@ function Videos() {
       <SectionHeading
         eyebrow="Video showcase"
         title="Reels, highlights and production moments"
-        text="Cinematic reel cards for wedding highlights, stage reveals, corporate launches and decor transformation moments."
+        text="Cinematic reel cards for conferences, exhibition walkthroughs, religious programs, launches and setup timelapses."
       />
       <div className="video-grid">
         {videos.map(([title, image]) => (
           <button key={title} type="button" onClick={() => setOpen(title)}>
-            <img src={image} alt={`${title} poster`} />
+            <SafeImage src={image} alt={`${title} poster`} />
             <span>
               <Icon name="play" />
             </span>
@@ -792,10 +850,10 @@ function Testimonials() {
       <SectionHeading
         eyebrow="Testimonials"
         title="Client experiences"
-        text="Polished review cards for weddings, corporate events and private celebrations."
+        text="Polished review cards for corporate programs, institutional events, launches and religious gatherings."
       />
       <article className="testimonial-card">
-        <div className="quote-mark">"</div>
+        <div className="quote-mark">&quot;</div>
         <p>{active.quote}</p>
         <div>
           <strong>{active.name}</strong>
@@ -836,8 +894,8 @@ function InstagramGallery() {
     <section className="section instagram">
       <SectionHeading
         eyebrow="Gallery previews"
-        title="Browse the celebration details"
-        text="A larger sample gallery of floral corners, mandap moments, reception tables, corporate stages and theme-event styling inspired by the Venus aesthetic."
+        title="Browse production details"
+        text="A curated sample gallery of corporate stages, exhibition booths, religious program setups, conference rooms and institutional event environments."
       />
       <div className="insta-grid">
         {galleryItems.map((item) => (
@@ -848,7 +906,7 @@ function InstagramGallery() {
             onClick={() => setActive(item)}
             aria-label={`Preview ${item.title}`}
           >
-            <img src={item.image} alt={`${item.title} gallery item`} />
+            <SafeImage src={item.image} alt={`${item.title} gallery item`} />
             <span className="gallery-card-content">
               <span className="gallery-category">{item.category}</span>
               <strong>{item.title}</strong>
@@ -873,7 +931,7 @@ function InstagramGallery() {
           <button className="lightbox-close" type="button" onClick={() => setActive(null)} aria-label="Close gallery preview">
             Close
           </button>
-          <img src={active.image} alt={`${active.title} expanded preview`} />
+          <SafeImage src={active.image} alt={`${active.title} expanded preview`} />
           <div className="gallery-lightbox-copy">
             <p className="eyebrow">{active.category}</p>
             <h3>{active.title}</h3>
@@ -897,7 +955,7 @@ function FAQ() {
       <SectionHeading
         eyebrow="FAQs"
         title="Answers before the first call"
-        text="Clear planning answers for couples, families and corporate teams preparing an event in Indore."
+        text="Clear planning answers for organizations, institutions, brands and religious committees preparing an event in Indore."
       />
       <div className="faq-list">
         {faqs.map(([question, answer], index) => (
@@ -925,16 +983,16 @@ function CTA() {
     <section className="section cta">
       <div>
         <p className="eyebrow">Ready when you are</p>
-        <h2>Let's Create Something Beautiful Together</h2>
+        <h2>Let us Plan a Professional Event Surface</h2>
         <p>
-          Tell us about your wedding, celebration, corporate event or custom decor concept. The team will help shape
-          the look, flow and production plan.
+          Share your event type, venue, audience size, technical needs and production scope. The team will help shape
+          the stage, flow, setup and execution plan.
         </p>
       </div>
       <div className="cta-actions">
         <a className="button button-gold" href="#contact">
           <Icon name="calendar" />
-          Book Now
+          Send Event Brief
         </a>
         <a className="button button-ghost" href={`tel:${contact.phonePrimary.replaceAll(" ", "")}`}>
           <Icon name="phone" />
@@ -1019,11 +1077,20 @@ function ContactForm() {
           Event type
           <select name="eventType" value={form.eventType} onChange={update}>
             <option value="">Select event</option>
-            {["Wedding", "Reception", "Haldi", "Mehendi", "Corporate Event", "Product Launch", "Theme Decor"].map(
-              (item) => (
-                <option key={item}>{item}</option>
-              )
-            )}
+            {[
+              "Corporate Event",
+              "Exhibition",
+              "Bhagwat / Religious Event",
+              "Conference / Seminar",
+              "Award Function",
+              "Product Launch",
+              "Office Event",
+              "School / College Event",
+              "Cultural Program",
+              "Groundbreaking Ceremony",
+            ].map((item) => (
+              <option key={item}>{item}</option>
+            ))}
           </select>
         </label>
         <label>
@@ -1071,7 +1138,7 @@ function Contact() {
     <section className="section contact-section" id="contact">
       <SectionHeading
         eyebrow="Contact"
-        title="Tell us what you are celebrating"
+        title="Share your event production requirement"
         text="Phone, WhatsApp, email and form CTAs are wired with production-friendly links."
       />
       <div className="contact-layout">
@@ -1118,7 +1185,8 @@ function Schema() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: contact.brand,
-    description: "Luxury wedding decor, corporate events and premium celebration production in Indore.",
+    description:
+      "Corporate events, exhibitions, religious events, conferences, product launches and institutional event production in Indore.",
     email: contact.email,
     telephone: [contact.phonePrimary, contact.phoneSecondary],
     address: {
@@ -1166,8 +1234,8 @@ export default function HomeExperience() {
         <Services />
         <section className="marquee" aria-label="Luxury event services">
           <div>
-            WE CREATE - YOU CELEBRATE - LUXURY EVENTS - PREMIUM DECOR - CORPORATE EVENTS - HALDI - MEHENDI -
-            WEDDINGS - RECEPTIONS - UNFORGETTABLE EXPERIENCES -
+            CORPORATE EVENTS - EXHIBITIONS - BHAGWAT PROGRAMS - RELIGIOUS GATHERINGS - CONFERENCES - AWARD
+            FUNCTIONS - PRODUCT LAUNCHES - INSTITUTIONAL EVENTS -
           </div>
         </section>
         <WhyChoose />

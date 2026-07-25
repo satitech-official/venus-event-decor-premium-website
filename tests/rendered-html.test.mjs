@@ -14,8 +14,8 @@ test("homepage source contains the Venus luxury sample experience", async () => 
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
   ]);
 
-  assert.match(home, /We Create\./);
-  assert.match(home, /You Celebrate\./);
+  assert.match(home, /We Plan\./);
+  assert.match(home, /We Produce\./);
   assert.match(home, /ContactForm/);
   assert.match(home, /heroSlides/);
   assert.match(home, /navigator\.onLine/);
@@ -28,18 +28,21 @@ test("homepage source contains the Venus luxury sample experience", async () => 
   assert.match(routeGallery, /route-gallery-grid/);
   assert.match(routeGallery, /setActive/);
   assert.match(data, /Venus Event & Decor/);
-  assert.match(data, /Haldi Decoration/);
-  assert.match(data, /Baby Shower/);
+  assert.match(data, /Corporate Events/);
+  assert.match(data, /Exhibitions & Stalls/);
+  assert.match(data, /Bhagwat & Religious Events/);
   assert.match(data, /galleryItems/);
   assert.match(data, /galleryPageItems/);
-  assert.match(data, /Baby Shower Welcome Corner/);
-  assert.match(data, /Corporate Entry Moment/);
-  assert.match(data, /Sangeet Dance Floor/);
+  assert.match(data, /Groundbreaking Ceremonies/);
+  assert.match(data, /School & College Events/);
+  assert.match(data, /Religious Gatherings/);
   assert.match(data, /instagram\.com\/venusevent01/);
+  assert.doesNotMatch(home + data, /wedding|birthday|anniversary|reception|haldi|mehendi|engagement|baby shower|sangeet|mandap/i);
   assert.match(styles, /--gold:\s*#d4af37/i);
   assert.match(styles, /service-card-body/);
   assert.match(styles, /route-highlight/);
   assert.match(styles, /route-gallery-card/);
+  assert.match(styles, /service-accent/);
   assert.match(styles, /menu-toggle\[aria-expanded="true"\]/);
   assert.match(styles, /padding: 6\.3rem 1rem 8\.2rem/);
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)/);

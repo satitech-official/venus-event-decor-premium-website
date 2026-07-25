@@ -41,6 +41,8 @@ body.menu-locked {
 }
 
 .site-shell {
+  position: relative;
+  z-index: 1;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -53,6 +55,73 @@ body.menu-locked {
 img {
   display: block;
   max-width: 100%;
+}
+
+.image-fallback {
+  background: linear-gradient(135deg, #0d0d0d, #241b0d);
+  filter: saturate(1.05) contrast(1.04);
+}
+
+.ambient-shapes {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  display: block;
+  opacity: 0.52;
+  will-change: transform;
+}
+
+.shape-diamond {
+  top: 12%;
+  left: min(7vw, 6rem);
+  width: clamp(8rem, 16vw, 16rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  background:
+    linear-gradient(135deg, transparent 45%, rgba(212, 175, 55, 0.16) 46%, transparent 52%),
+    linear-gradient(45deg, transparent 45%, rgba(125, 211, 252, 0.12) 46%, transparent 52%);
+  transform: rotate(45deg);
+  animation: shape-drift 16s ease-in-out infinite;
+}
+
+.shape-ribbon {
+  top: 38%;
+  right: -7rem;
+  width: clamp(16rem, 30vw, 34rem);
+  height: 5rem;
+  clip-path: polygon(0 28%, 86% 0, 100% 72%, 14% 100%);
+  background: linear-gradient(90deg, rgba(247, 231, 206, 0.02), rgba(212, 175, 55, 0.18), rgba(125, 211, 252, 0.08));
+  animation: shape-sweep 18s ease-in-out infinite;
+}
+
+.shape-frame {
+  right: 8vw;
+  bottom: 18%;
+  width: clamp(7rem, 13vw, 14rem);
+  aspect-ratio: 1.35;
+  border: 1px solid rgba(247, 231, 206, 0.18);
+  box-shadow: inset 0 0 0 1rem rgba(212, 175, 55, 0.03);
+  transform: skew(-8deg);
+  animation: shape-pulse 12s ease-in-out infinite;
+}
+
+.shape-steps {
+  left: 48%;
+  bottom: 7%;
+  width: clamp(10rem, 22vw, 24rem);
+  height: 8rem;
+  background:
+    linear-gradient(90deg, rgba(212, 175, 55, 0.22) 2px, transparent 2px),
+    linear-gradient(180deg, rgba(247, 231, 206, 0.12) 2px, transparent 2px);
+  background-size: 2.2rem 2.2rem;
+  clip-path: polygon(0 64%, 28% 64%, 28% 42%, 56% 42%, 56% 20%, 100% 20%, 100% 100%, 0 100%);
+  animation: shape-steps 14s linear infinite;
 }
 
 a {
@@ -404,11 +473,15 @@ button {
 
 .hero-light {
   position: absolute;
-  width: 42vw;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.25), transparent 65%);
-  filter: blur(8px);
+  width: clamp(15rem, 38vw, 42rem);
+  aspect-ratio: 1.8 / 1;
+  clip-path: polygon(0 34%, 76% 0, 100% 64%, 24% 100%);
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  background:
+    linear-gradient(135deg, rgba(212, 175, 55, 0.22), rgba(247, 231, 206, 0.05) 46%, transparent 72%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 22px);
+  opacity: 0.72;
+  filter: blur(1px);
 }
 
 .hero-light-one {
@@ -775,13 +848,41 @@ p {
   min-height: auto;
   flex-direction: column;
   border-radius: 1rem;
+  isolation: isolate;
   transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
+.service-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--service-accent) 20%, transparent), transparent 38%),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--service-accent) 12%, transparent) 0 1px, transparent 1px 46px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  opacity: 0.75;
+}
+
+.service-card::after {
+  position: absolute;
+  inset: 0.65rem;
+  z-index: -1;
+  border: 1px solid color-mix(in srgb, var(--service-accent) 35%, transparent);
+  border-radius: 0.75rem;
+  content: "";
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
 .service-card:hover {
-  border-color: rgba(212, 175, 55, 0.38);
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.38), 0 0 36px rgba(212, 175, 55, 0.12);
+  border-color: color-mix(in srgb, var(--service-accent) 50%, transparent);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.38), 0 0 36px color-mix(in srgb, var(--service-accent) 20%, transparent);
   transform: translateY(-3px);
+}
+
+.service-card:hover::after {
+  opacity: 1;
 }
 
 .service-card-media {
@@ -803,6 +904,49 @@ p {
   flex-direction: column;
   gap: 0.7rem;
   padding: 1.15rem;
+}
+
+.service-card[data-layout="executive"] .service-card-media,
+.service-card[data-layout="conference"] .service-card-media {
+  aspect-ratio: 16 / 9;
+}
+
+.service-card[data-layout="expo"] .service-card-media,
+.service-card[data-layout="launch"] .service-card-media {
+  aspect-ratio: 5 / 4;
+}
+
+.service-card[data-layout="spiritual"] .service-card-media,
+.service-card[data-layout="devotional"] .service-card-media {
+  aspect-ratio: 4 / 3;
+  border-bottom: 2px solid color-mix(in srgb, var(--service-accent) 55%, transparent);
+}
+
+.service-card[data-layout="ceremony"] .service-card-media,
+.service-card[data-layout="award"] .service-card-media {
+  aspect-ratio: 3 / 2;
+}
+
+.service-card[data-layout="campus"] .service-card-media,
+.service-card[data-layout="cultural"] .service-card-media {
+  aspect-ratio: 16 / 11;
+}
+
+.service-card[data-layout="expo"] .service-card-body,
+.service-card[data-layout="office"] .service-card-body,
+.service-card[data-layout="campus"] .service-card-body {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--service-accent) 10%, transparent), transparent);
+}
+
+.service-card[data-layout="spiritual"] .icon-badge,
+.service-card[data-layout="devotional"] .icon-badge {
+  border-radius: 0.85rem;
+}
+
+.service-card[data-layout="award"] .icon-badge,
+.service-card[data-layout="launch"] .icon-badge {
+  color: #120f09;
+  background: var(--service-accent);
 }
 
 .service-card img,
@@ -843,10 +987,10 @@ p {
   place-items: center;
   width: 2.65rem;
   height: 2.65rem;
-  border: 1px solid rgba(212, 175, 55, 0.36);
+  border: 1px solid color-mix(in srgb, var(--service-accent, var(--gold)) 42%, transparent);
   border-radius: 50%;
   color: var(--champagne);
-  background: rgba(212, 175, 55, 0.12);
+  background: color-mix(in srgb, var(--service-accent, var(--gold)) 16%, transparent);
   font-size: 0.74rem;
   font-weight: 900;
 }
@@ -902,7 +1046,7 @@ p {
 .card-link .icon {
   width: 0.95rem;
   height: 0.95rem;
-  color: var(--gold);
+  color: var(--service-accent, var(--gold));
 }
 
 .marquee {
@@ -1626,11 +1770,42 @@ textarea {
 .footer-bottom {
   grid-column: 1 / -1;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
+}
+
+.footer-top-button {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-width: 5.4rem;
+  min-height: 2.7rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  border-radius: 999px;
+  color: var(--champagne) !important;
+  background: linear-gradient(135deg, rgba(247, 231, 206, 0.08), rgba(212, 175, 55, 0.12));
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+  font-weight: 800;
+  line-height: 1;
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+.footer-top-button .icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--gold);
+}
+
+.footer-top-button:hover {
+  border-color: rgba(212, 175, 55, 0.62);
+  background: linear-gradient(135deg, rgba(247, 231, 206, 0.12), rgba(212, 175, 55, 0.22));
+  transform: translateY(-2px);
 }
 
 .simple-nav {
@@ -1925,6 +2100,49 @@ textarea {
 .legal-page a:not(.brand):not(.button) {
   color: var(--champagne);
   text-decoration: underline;
+}
+
+@keyframes shape-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(45deg);
+  }
+  50% {
+    transform: translate3d(1.4rem, -1rem, 0) rotate(58deg);
+  }
+}
+
+@keyframes shape-sweep {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) skew(-8deg);
+  }
+  50% {
+    transform: translate3d(-2rem, 1.2rem, 0) skew(6deg);
+  }
+}
+
+@keyframes shape-pulse {
+  0%,
+  100% {
+    transform: scale(1) skew(-8deg);
+    opacity: 0.38;
+  }
+  50% {
+    transform: scale(1.08) skew(-2deg);
+    opacity: 0.68;
+  }
+}
+
+@keyframes shape-steps {
+  from {
+    background-position: 0 0;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    background-position: 4.4rem 2.2rem;
+    transform: translate3d(-1rem, 0.6rem, 0);
+  }
 }
 
 @keyframes line-draw {

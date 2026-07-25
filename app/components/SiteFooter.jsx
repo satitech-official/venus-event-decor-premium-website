@@ -65,10 +65,10 @@ export default function SiteFooter() {
           </div>
         </a>
         <p>
-          Luxury event decor, wedding celebration design and corporate event styling for Indore and nearby destination
-          venues.
+          Corporate event, exhibition, institutional program and religious event production for Indore and nearby
+          professional venues.
         </p>
-        <a className="button button-gold footer-whatsapp" href={whatsappUrl()}>
+        <a className="button button-gold footer-whatsapp" href={whatsappUrl()} target="_blank" rel="noreferrer">
           <FooterIcon name="whatsapp" />
           WhatsApp
         </a>
@@ -122,9 +122,9 @@ export default function SiteFooter() {
 
       <div className="footer-bottom">
         <span>(c) {year} Venus Event & Decor. All Rights Reserved.</span>
-        <a className="footer-link" href="#top">
+        <a className="footer-top-button" href="#top" aria-label="Back to top">
           <FooterIcon name="arrowUp" />
-          Back to top
+          <span>Top</span>
         </a>
       </div>
     </footer>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import SafeImage from "./SafeImage";
 
 function GalleryIcon() {
   return (
@@ -34,10 +35,10 @@ export default function GalleryRoutePreview({ items, instagramUrl }) {
       <div className="route-gallery-toolbar">
         <div>
           <p className="eyebrow">Click any image</p>
-          <h2>Detailed previews for every decor moment</h2>
+          <h2>Detailed previews for every production surface</h2>
           <p>
-            Browse a larger sample gallery across weddings, receptions, rituals, corporate events and intimate
-            celebrations.
+            Browse a larger sample gallery across corporate events, exhibitions, religious programs, institutional
+            events, launch stages and formal gatherings.
           </p>
         </div>
         <div className="route-gallery-filters" role="tablist" aria-label="Gallery categories">
@@ -65,7 +66,7 @@ export default function GalleryRoutePreview({ items, instagramUrl }) {
             onClick={() => setActive(item)}
             aria-label={`Preview ${item.title}`}
           >
-            <img src={item.image} alt={`${item.title} gallery preview`} />
+            <SafeImage src={item.image} alt={`${item.title} gallery preview`} />
             <span className="route-gallery-card-copy">
               <span>{item.category}</span>
               <strong>{item.title}</strong>
@@ -84,7 +85,7 @@ export default function GalleryRoutePreview({ items, instagramUrl }) {
           <button className="lightbox-close" type="button" onClick={() => setActive(null)} aria-label="Close preview">
             Close
           </button>
-          <img src={active.image} alt={`${active.title} expanded gallery view`} />
+          <SafeImage src={active.image} alt={`${active.title} expanded gallery view`} />
           <div className="route-gallery-lightbox-copy">
             <p className="eyebrow">{active.category}</p>
             <h3>{active.title}</h3>

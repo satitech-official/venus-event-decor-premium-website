@@ -2,6 +2,7 @@
 
 # Venus Event & Decor
 
+<<<<<<< HEAD
 ### Premium Event Decoration Website · Indore
 
 [![Open Live Website](https://img.shields.io/badge/OPEN%20LIVE%20WEBSITE-Click%20Here-d4a85d?style=for-the-badge&logo=github&logoColor=white)](https://satitech-official.github.io/venus-event-decor-premium-website/)
@@ -24,6 +25,9 @@ https://satitech-official.github.io/venus-event-decor-premium-website/
 ## About the Project
 
 A premium sample website for **Venus Event & Decor**, a luxury event and decoration brand based in Indore, Madhya Pradesh. It is designed as a responsive, cinematic and interactive showcase for weddings, corporate events, stage decoration and theme celebrations.
+=======
+Premium sample website for Venus Event & Decor, a professional event production brand based in Indore.
+>>>>>>> 6c421e0 (upgrading)
 
 ## Included
 
@@ -86,7 +90,11 @@ out/
 
 ## Configuration
 
+<<<<<<< HEAD
 Use the final GitHub Pages URL in `.env.local` when required:
+=======
+The current site uses high-quality sample content and replaceable event imagery for corporate events, exhibitions, religious programs, institutional events, conferences, launches and formal gatherings. Before launch, replace imagery and review text with approved Venus Event & Decor assets, client names and event photographs.
+>>>>>>> 6c421e0 (upgrading)
 
 ```bash
 NEXT_PUBLIC_SITE_URL=https://satitech-official.github.io/venus-event-decor-premium-website
