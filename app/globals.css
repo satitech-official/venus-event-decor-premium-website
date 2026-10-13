@@ -2719,3 +2719,107 @@ a:focus-visible,button:focus-visible { outline: 3px solid var(--venus-antique-go
   .happigo-visual { min-height: 15rem; }
   .happigo-text h2 { font-size: clamp(3.2rem,16vw,5rem); }
 }
+
+
+/* APPROVED REFERENCE: ivory / emerald / antique-gold editorial presentation */
+:root {
+ --midnight:#F6F1E6;--charcoal:#16231E;--surface:#fffdf8;--brown:#F6F1E6;
+ --gold:#B58B42;--rose:#B58B42;--champagne:#F6F1E6;--white:#062D23;
+ --muted:#506059;--glass:rgba(6,45,35,.04);--line:rgba(6,45,35,.2);
+ --shadow:0 14px 40px rgba(6,45,35,.09);
+}
+html { background:#F6F1E6; }
+body { background:#F6F1E6; color:#16231E; }
+.ambient-shapes,.cursor-glow,.hero-light,.hero-noise {display:none!important}
+.site-nav,.site-nav.is-scrolled {
+ background:rgba(246,241,230,.97)!important; color:#062D23!important;
+ border-bottom:1px solid rgba(181,139,66,.32);
+ backdrop-filter:blur(12px);box-shadow:0 2px 18px rgba(6,45,35,.05);
+}
+.brand,.site-nav .brand,.nav-links a {color:#062D23!important}
+.brand span,.loader-mark {background:#062D23;color:#B58B42;border:1px solid #B58B42}
+.nav-cta,.button-gold {background:#062D23!important;color:#F6F1E6!important;border:1px solid #062D23!important}
+.button-ghost {border:1px solid #B58B42!important;color:#062D23!important;background:transparent!important}
+.button-text {color:#062D23!important}
+.hero {
+ background:#F6F1E6!important;color:#062D23!important;
+ min-height:min(760px,90vh);display:flex;align-items:center;
+ padding:clamp(7rem,12vw,11rem) clamp(1.2rem,4vw,4rem) clamp(4rem,7vw,6rem)!important;
+ isolation:isolate;position:relative;
+}
+.hero::after {display:none!important}
+.hero-content { position:relative;z-index:4;width:44%!important;max-width:600px!important;margin:0!important;padding:0 2.5rem 0 0!important;text-align:left!important; }
+.hero-content .eyebrow {color:#B58B42!important}
+.hero h1 {font-family:Georgia,"Times New Roman",serif;color:#062D23!important;
+ font-size:clamp(3.25rem,6vw,6.5rem)!important;line-height:1.02!important;
+ font-weight:400!important;max-width:12ch!important}
+.hero h1 span {color:#062D23!important;display:block}
+.hero-copy,.hero-subtitle {color:#354c42!important;max-width:37rem}
+.hero-slideshow {position:absolute!important;inset:15% 3% 10% 46%!important;
+ border:2px solid #B58B42;border-radius:0!important;overflow:hidden;
+ clip-path:polygon(9% 0,82% 0,82% 7%,100% 7%,100% 100%,0 100%,0 10%,9% 10%);
+ box-shadow:14px 14px 0 rgba(181,139,66,.10);
+}
+.hero-slideshow::before {content:"";position:absolute;inset:0;z-index:1;
+ pointer-events:none;background:linear-gradient(0deg,rgba(6,45,35,.18),transparent 44%)}
+.hero-image {object-fit:cover}
+.hero-badge {right:1.7%!important;bottom:20%!important;top:auto!important;
+ background:#062D23!important;color:#F6F1E6!important;border:2px solid #B58B42!important;
+ border-radius:0!important;padding:1.25rem!important}
+.hero-badge strong,.hero-badge span {color:#F6F1E6!important}
+.hero-slide-controls {right:7%!important;left:auto!important;bottom:6%!important;max-width:40%!important}
+.scroll-cue {display:none!important}
+.section {background:#F6F1E6;color:#062D23}
+.section-heading h2,.about-copy h2,.category-stage h2,.corporate h2 {
+ font-family:Georgia,serif;color:#062D23!important;font-weight:400!important}
+.section-heading p,.about-copy p,.category-stage p {color:#43564c}
+.service-card,.portfolio-card,.gallery-card {
+ background:#fffdf8!important;color:#062D23!important;
+ border:1px solid #B58B42!important;border-radius:0!important;
+ clip-path:polygon(0 0,calc(100% - 24px) 0,100% 24px,100% 100%,0 100%)!important;
+}
+.service-card-body h3,.service-card-body p {color:#062D23!important}
+.portfolio,.portfolio.section,.process.section,.why.section,.cta.section {
+ background:#062D23!important;color:#F6F1E6!important;
+}
+.portfolio .section-heading h2,.portfolio .section-heading p,
+.why .section-heading h2,.why .section-heading p,
+.cta h2,.cta p {color:#F6F1E6!important}
+.portfolio-card,.portfolio-card h3,.portfolio-card p {color:#062D23!important}
+.marquee {background:#062D23!important;color:#F6F1E6!important;
+ border-block:2px solid #B58B42!important}
+.feature-grid article,.process-line article,.contact-cards a,.contact-cards div {
+ border-radius:0!important;border-color:rgba(181,139,66,.55)!important;
+}
+.process .section-heading h2,.process .section-heading p {color:#F6F1E6!important}
+.process-line article {background:#F6F1E6!important;color:#062D23!important}
+.contact-section,.contact-form {background:#F6F1E6!important;color:#062D23!important}
+.contact-form input,.contact-form textarea,.contact-form select {
+ background:#fffdf8!important;color:#062D23!important;border:1px solid #B58B42!important;
+ border-radius:2px!important;
+}
+.footer,.site-footer {background:#062D23!important;color:#F6F1E6!important;
+ border-top:4px solid #B58B42!important}
+.footer h3,.footer .brand,.footer a,.footer p,.footer span {color:#F6F1E6!important}
+.footer .brand span {color:#B58B42!important}
+.whatsapp-float {background:#062D23!important;color:#F6F1E6!important;border:1px solid #B58B42!important}
+.loader {background:#062D23!important;color:#F6F1E6!important}
+.loader p,.loader span {color:#F6F1E6!important}
+.happigo-panel {background:#F5C842!important}
+@media(max-width:800px) {
+ .hero {min-height:auto;display:flex;flex-direction:column;align-items:stretch;
+ padding:7rem 1.15rem 2rem!important;gap:2rem}
+ .hero-content {width:100%!important;max-width:none!important;padding:0!important}
+ .hero h1 {font-size:clamp(3.2rem,11vw,5.4rem)!important}
+ .hero-slideshow {position:relative!important;inset:auto!important;
+  width:100%!important;height:clamp(260px,60vw,470px);order:2}
+ .hero-badge {position:relative!important;right:auto!important;bottom:auto!important;
+  align-self:flex-end;order:3;margin-top:-5rem;z-index:5}
+ .hero-slide-controls {position:relative!important;right:auto!important;bottom:auto!important;
+  max-width:100%!important;order:4}
+ .nav-links.is-open {background:#F6F1E6!important;color:#062D23!important}
+ .section {padding-left:1rem;padding-right:1rem}
+}
+@media(prefers-reduced-motion:reduce) {
+ .service-card:hover,.portfolio-card:hover {transform:none!important}
+}
