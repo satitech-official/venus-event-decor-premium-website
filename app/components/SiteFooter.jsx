@@ -47,7 +47,7 @@ function FooterIcon({ name }) {
   );
 }
 
-function whatsappUrl(message = "Hello Venus Event & Decor, I would like to discuss an event.") {
+function whatsappUrl(message = "Hello Venus Event & Suppliers, I would like to discuss an event.") {
   return `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
@@ -57,13 +57,14 @@ export default function SiteFooter() {
   return (
     <footer className="footer site-footer">
       <div className="footer-brand-block">
-        <a className="brand" href="/" aria-label="Venus Event & Decor home">
+        <a className="brand" href="/" aria-label="Venus Event & Suppliers home">
           <span>V</span>
           <div>
             <strong>Venus</strong>
-            <small>Event & Decor</small>
+            <small>Event & Suppliers</small>
           </div>
         </a>
+        <p>A Laxmi Ventures Company · We Create. You Celebrate.</p>
         <p>
           Corporate event, exhibition, institutional program and religious event production for Indore and nearby
           professional venues.
@@ -81,8 +82,7 @@ export default function SiteFooter() {
             {item.label}
           </a>
         ))}
-        <a href="/portfolio">Portfolio</a>
-        <a href="/corporate-events">Corporate Events</a>
+
       </div>
 
       <div>
@@ -104,6 +104,10 @@ export default function SiteFooter() {
           <FooterIcon name="phone" />
           {contact.phoneSecondary}
         </a>
+        <a className="footer-link" href={`tel:${contact.phoneThird.replaceAll(" ", "")}`}>
+          <FooterIcon name="phone" />
+          {contact.phoneThird}
+        </a>
         <a className="footer-link" href={`mailto:${contact.email}`}>
           <FooterIcon name="mail" />
           {contact.email}
@@ -114,14 +118,16 @@ export default function SiteFooter() {
         </a>
         <a className="footer-link" href={contact.instagramUrl} target="_blank" rel="noreferrer">
           <FooterIcon name="instagram" />
-          Instagram @venusevent01
+          Instagram @venusevent_1
         </a>
+        <a className="footer-link" href={contact.facebookUrl} target="_blank" rel="noopener noreferrer">Facebook — Venus Event &amp; Suppliers</a>
+        <a href="#happigo">Happigo — Our Sister Concern</a>
         <a href="/privacy-policy">Privacy Policy</a>
         <a href="/terms-and-conditions">Terms and Conditions</a>
       </div>
 
       <div className="footer-bottom">
-        <span>(c) {year} Venus Event & Decor. All Rights Reserved.</span>
+        <span>© {year} Venus Event & Suppliers. All rights reserved.</span>
         <a className="footer-top-button" href="#top" aria-label="Back to top">
           <FooterIcon name="arrowUp" />
           <span>Top</span>
