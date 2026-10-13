@@ -1,14 +1,19 @@
 export const contact = {
-  brand: "Venus Event & Decor",
-  tagline: "Professional Events. Precise Production.",
+  brand: "Venus Event & Suppliers",
+  tagline: "We Create. You Celebrate.",
+  parentCompany: "Laxmi Ventures",
+  supportingLine: "A Laxmi Ventures Company",
   secondaryTagline: "Corporate, Exhibition, Institutional and Religious Event Production.",
   city: "Indore, Madhya Pradesh, India",
   phonePrimary: "+91 8269371546",
   phoneSecondary: "+91 7898200410",
+  phoneThird: "+91 9109304378",
   email: "venusevent1623@gmail.com",
   whatsapp: "918269371546",
   mapUrl: "https://www.google.com/maps/search/?api=1&query=Indore%2C%20Madhya%20Pradesh%2C%20India",
-  instagramUrl: "https://www.instagram.com/venusevent01?igsh=ZWgzcTlycjhiOWMy",
+  instagramUrl: "https://www.instagram.com/venusevent_1/",
+  facebookUrl: "https://www.facebook.com/search/top?q=Venus%20Event%20%26%20Suppliers",
+  happigoUrl: "", // Set the confirmed Happigo website URL before enabling its CTA
 };
 
 const pexels = (id, width = 1600) =>
@@ -17,7 +22,7 @@ const pexels = (id, width = 1600) =>
 const unsplash = (id, width = 1600) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${width}&q=82`;
 
-const fallbackSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080808"/><stop offset="0.55" stop-color="#17110a"/><stop offset="1" stop-color="#2a210e"/></linearGradient><radialGradient id="glow" cx="50%" cy="42%" r="55%"><stop stop-color="#d4af37" stop-opacity="0.45"/><stop offset="1" stop-color="#d4af37" stop-opacity="0"/></radialGradient></defs><rect width="1600" height="1000" fill="url(#bg)"/><circle cx="800" cy="420" r="430" fill="url(#glow)"/><path d="M170 740 C360 560 510 835 715 635 C920 435 1085 785 1430 520" fill="none" stroke="#d4af37" stroke-opacity="0.42" stroke-width="4"/><path d="M230 300 H1370 M230 700 H1370" stroke="#f7e7ce" stroke-opacity="0.11" stroke-width="2"/><text x="800" y="465" fill="#f7e7ce" font-family="Georgia,serif" font-size="82" text-anchor="middle">Venus Event &amp; Decor</text><text x="800" y="535" fill="#d4af37" font-family="Arial,sans-serif" font-size="30" letter-spacing="8" text-anchor="middle">EVENT PRODUCTION</text></svg>`;
+const fallbackSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080808"/><stop offset="0.55" stop-color="#17110a"/><stop offset="1" stop-color="#2a210e"/></linearGradient><radialGradient id="glow" cx="50%" cy="42%" r="55%"><stop stop-color="#d4af37" stop-opacity="0.45"/><stop offset="1" stop-color="#d4af37" stop-opacity="0"/></radialGradient></defs><rect width="1600" height="1000" fill="url(#bg)"/><circle cx="800" cy="420" r="430" fill="url(#glow)"/><path d="M170 740 C360 560 510 835 715 635 C920 435 1085 785 1430 520" fill="none" stroke="#d4af37" stroke-opacity="0.42" stroke-width="4"/><path d="M230 300 H1370 M230 700 H1370" stroke="#f7e7ce" stroke-opacity="0.11" stroke-width="2"/><text x="800" y="465" fill="#f7e7ce" font-family="Georgia,serif" font-size="82" text-anchor="middle">Venus Event &amp; Suppliers</text><text x="800" y="535" fill="#d4af37" font-family="Arial,sans-serif" font-size="30" letter-spacing="8" text-anchor="middle">EVENT PRODUCTION</text></svg>`;
 
 export const fallbackImage = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(fallbackSvg)}`;
 
@@ -93,23 +98,14 @@ export const imageBank = {
 export const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
+  { label: "Expertise", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Corporate", href: "/corporate-events" },
-  { label: "Testimonials", href: "/testimonials" },
-  { label: "FAQs", href: "/faqs" },
+  { label: "Cooperative Events", href: "/corporate-events" },
   { label: "Contact", href: "/contact" },
 ];
 
-export const stats = [
-  { label: "Professional Events", value: 210, suffix: "+", note: "Corporate, institutional and public programs" },
-  { label: "Exhibition Setups", value: 75, suffix: "+", note: "Stalls, expo counters and brand display zones" },
-  { label: "Religious Programs", value: 90, suffix: "+", note: "Bhagwat, pravachan, pandal and spiritual gatherings" },
-  { label: "Launch & Award Stages", value: 55, suffix: "+", note: "Product reveals, ceremonies and recognition events" },
-  { label: "Cities Served", value: 12, suffix: "+", note: "Indore and nearby professional event locations" },
-  { label: "Production Experience", value: 8, suffix: "+", note: "Years of disciplined on-ground execution" },
-];
+export const stats = [];
 
 export const services = [
   {
@@ -449,41 +445,10 @@ export const process = [
   ["06", "Handover", "The event surface is closed cleanly with post-event coordination and material removal."],
 ];
 
-export const testimonials = [
-  {
-    name: "Rajat Mehta",
-    event: "Product Launch",
-    location: "Vijay Nagar",
-    date: "March 2026",
-    rating: 5,
-    verified: false,
-    quote:
-      "The launch stage, screen focus and guest movement felt professional from entry to reveal. The setup looked premium and stayed organized throughout.",
-  },
-  {
-    name: "Anita Sharma",
-    event: "Institutional Seminar",
-    location: "Indore",
-    date: "April 2026",
-    rating: 5,
-    verified: false,
-    quote:
-      "The seminar hall was arranged with clear visibility, neat branding and disciplined seating. It gave the program a formal and reliable presentation.",
-  },
-  {
-    name: "Mahesh Agrawal",
-    event: "Bhagwat Program",
-    location: "Rau, Indore",
-    date: "May 2026",
-    rating: 5,
-    verified: false,
-    quote:
-      "The pandal, stage and sound arrangement were handled respectfully. Guests were comfortable and the devotional atmosphere felt calm and well managed.",
-  },
-];
+export const testimonials = [];
 
 export const faqs = [
-  ["Which types of events do you manage?", "Venus Event & Decor supports corporate events, exhibitions, Bhagwat and religious programs, professional events, institutional functions, conferences, award functions, product launches, office events, cultural programs and public gatherings."],
+  ["Which types of events do you manage?", "Venus Event & Suppliers supports corporate events, exhibitions, Bhagwat and religious programs, professional events, institutional functions, conferences, award functions, product launches, office events, cultural programs and public gatherings."],
   ["Do you provide exhibition stall and booth setup?", "Yes. Stall design, booth counters, branding panels, display planning, lighting and visitor flow can be discussed according to exhibition size and venue rules."],
   ["Can you manage Bhagwat or religious event pandal arrangements?", "Yes. The team can support stage setup, pandal planning, seating, sound coordination, entry flow and devotional ambience for religious gatherings."],
   ["Do you handle school and college events?", "Yes. Annual programs, seminars, cultural programs, orientation sessions and institutional ceremonies can be planned with formal staging and audience flow."],
@@ -493,7 +458,7 @@ export const faqs = [
 
 export const routePages = {
   about: {
-    title: "About Venus Event & Decor",
+    title: "About Venus Event & Suppliers",
     eyebrow: "Professional event production house",
     image: imageBank.routeAbout,
     description:
