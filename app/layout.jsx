@@ -3,7 +3,7 @@ import BasePathGuard from "./components/BasePathGuard";
 import SiteFooter from "./components/SiteFooter";
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://venus-event-decor.example";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://satitech-official.github.io/venus-event-decor-premium-website/";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const faviconUrl = `${basePath}/favicon.svg`;
 const socialImageUrl = `${basePath}/image-fallback.svg`;
@@ -12,14 +12,14 @@ export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      "Venus Event & Decor | Corporate, Exhibition & Religious Events in Indore",
-    template: "%s | Venus Event & Decor",
+      "Venus Event & Suppliers | Event Production House in Indore",
+    template: "%s | Venus Event & Suppliers",
   },
   description:
-    "Venus Event & Decor produces corporate events, exhibitions, Bhagwat and religious programs, conferences, product launches, award functions and institutional events in Indore.",
+    "Venus Event & Suppliers produces corporate events, exhibitions, Bhagwat and religious programs, conferences, product launches, award functions and institutional events in Indore.",
 
   keywords: [
-    "Venus Event & Decor",
+    "Venus Event & Suppliers",
     "corporate events Indore",
     "exhibition stall setup Indore",
     "Bhagwat event setup Indore",
@@ -38,9 +38,9 @@ export const metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    siteName: "Venus Event & Decor",
+    siteName: "Venus Event & Suppliers",
     title:
-      "Venus Event & Decor | Professional Event Production in Indore",
+      "Venus Event & Suppliers | Professional Event Production in Indore",
     description:
       "Corporate event production, exhibition stalls, religious programs, conferences, award functions and product launches in Indore.",
     images: [
@@ -48,15 +48,15 @@ export const metadata = {
         url: socialImageUrl,
         width: 1600,
         height: 1000,
-        alt: "Venus Event & Decor premium event styling",
+        alt: "Venus Event & Suppliers premium event styling",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Venus Event & Decor",
-    description: "Professional Events. Precise Production.",
+    title: "Venus Event & Suppliers",
+    description: "We Create. You Celebrate.",
     images: [socialImageUrl],
   },
 };
