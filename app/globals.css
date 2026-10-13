@@ -2660,3 +2660,62 @@ textarea {
     display: none;
   }
 }
+
+
+/* Venus 2026 identity — Stage Architecture + Production Blueprint */
+:root {
+  --venus-ivory: #F6F1E6;
+  --venus-emerald: #062D23;
+  --venus-forest: #0B4636;
+  --venus-antique-gold: #B58B42;
+  --venus-charcoal: #16231E;
+  --venus-stone: #D8D0C1;
+  --venus-happigo: #F5C842;
+}
+html { scroll-padding-top: 5.5rem; }
+body { overflow-x: clip; }
+.site-nav, .site-nav.is-scrolled {
+  border-bottom: 1px solid var(--venus-antique-gold);
+}
+.site-nav .brand small { letter-spacing: .08em; }
+.hero-content .eyebrow { color: #e5c68e; }
+.hero h1 { max-width: 12ch; text-wrap: balance; letter-spacing: -.025em; }
+.hero .button-gold { background: var(--venus-forest); color: #fff; border-color: var(--venus-antique-gold); }
+.section-heading h2 { text-wrap: balance; }
+.service-card, .portfolio-card, .gallery-card {
+  border-radius: 4px;
+  clip-path: polygon(0 0, calc(100% - 23px) 0, 100% 23px, 100% 100%, 0 100%);
+}
+.service-card:hover, .portfolio-card:hover { transform: translateY(-5px); }
+.happigo-panel {
+  background: var(--venus-happigo);
+  color: var(--venus-emerald);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .95fr);
+  align-items: stretch;
+  gap: clamp(1rem,4vw,4rem);
+  padding: clamp(2rem,6vw,6rem);
+  overflow: hidden;
+}
+.happigo-text { align-self: center; max-width: 40rem; }
+.happigo-text .eyebrow { color: #0B4636; letter-spacing: .13em; font-weight: 750; }
+.happigo-text h2 {
+  font-family: Georgia,serif;
+  font-size: clamp(3.5rem,9vw,8rem);
+  line-height: 1;
+  margin: .4rem 0;
+  color: var(--venus-emerald);
+}
+.happigo-text h3 { font-size: clamp(1.3rem,2.8vw,2rem); margin-bottom: 1rem; }
+.happigo-text p { line-height: 1.65; }
+.happigo-text .button { display: inline-flex; margin-top: 1.5rem; background: var(--venus-emerald); color: #fff; }
+.happigo-unavailable { display: inline-block; padding: .8rem 0; font-weight: 700; }
+.happigo-visual { min-height: 22rem; overflow: hidden; clip-path: polygon(0 0,100% 0,100% 87%,87% 100%,0 100%); }
+.happigo-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.contact-form input:focus-visible,.contact-form select:focus-visible,.contact-form textarea:focus-visible,
+a:focus-visible,button:focus-visible { outline: 3px solid var(--venus-antique-gold); outline-offset: 3px; }
+@media (max-width: 767px) {
+  .happigo-panel { grid-template-columns: 1fr; padding: 2.3rem 1.15rem; }
+  .happigo-visual { min-height: 15rem; }
+  .happigo-text h2 { font-size: clamp(3.2rem,16vw,5rem); }
+}
