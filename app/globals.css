@@ -2838,3 +2838,27 @@ body { background:#F6F1E6; color:#16231E; }
 .production-pass-rail {writing-mode:initial;transform:none;grid-column:1/-1}
 .production-pass>small {grid-column:1/-1}
 .production-pass>span:not(:first-child){min-height:70px;padding:.9rem}.production-pass>span:nth-last-of-type(1){grid-column:1/-1}}
+
+
+/* Service cards: accessible contrast on ivory backgrounds */
+.service-card .icon-badge {
+ color:#062D23!important;
+ border:1px solid rgba(6,45,35,.45)!important;
+ background:#E8E3D6!important;
+ opacity:1!important;
+}
+.service-card .icon-badge .icon,.service-card .icon-badge svg {
+ color:#062D23!important;stroke:#062D23!important;opacity:1!important;
+}
+.service-card .card-link,.service-card .service-overlay a {
+ color:#062D23!important;
+ font-weight:750!important;
+ opacity:1!important;
+ text-shadow:none!important;
+}
+.service-card .card-link .icon,.service-card .card-link svg {
+ color:#062D23!important;stroke:#062D23!important;opacity:1!important;
+}
+.service-card .card-link:hover,.service-card .card-link:focus-visible {
+ color:#0B4636!important;text-decoration:underline;
+}
