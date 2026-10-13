@@ -38,7 +38,7 @@ export const imageBank = {
   serviceBhagwat: pexels("15335735"),
   serviceInstitutional: pexels("29581807"),
   serviceGroundbreaking:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Gold_Shovels_-_Webber_Park_Library_Groundbreaking%2C_Minneapolis_%2826338060081%29.jpg/1600px-Gold_Shovels_-_Webber_Park_Library_Groundbreaking%2C_Minneapolis_%2826338060081%29.jpg",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Bhoomi_Pujan_Ceremony_at_INDU_site_at_Binola_%26_Bilaspur%2C_Gurgaon.jpg",
   serviceConference: pexels("34612075"),
   serviceAward: pexels("7005630"),
   serviceProduct: unsplash("1551818255-e6e10975bc17"),
