@@ -1235,6 +1235,15 @@ export default function HomeExperience() {
       <Navbar />
       <main>
         <Hero />
+        <div className="production-pass" aria-label="Venus production capabilities">
+          <span className="production-pass-rail">ALL ACCESS</span>
+          <span>Structured Planning</span>
+          <span>Reliable Suppliers</span>
+          <span>On-ground Execution</span>
+          <span>Technical Excellence</span>
+          <span>Premium Finish</span>
+          <small>VENUS PASS</small>
+        </div>
         {/* Statistics stay hidden until independently verified. */}
         <About />
         <Services />
