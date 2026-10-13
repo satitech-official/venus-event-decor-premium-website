@@ -214,7 +214,7 @@ function Icon({ name, className = "" }) {
   );
 }
 
-function whatsappUrl(message = "Hello Venus Event & Decor, I would like to discuss an event.") {
+function whatsappUrl(message = "Hello Venus Event & Suppliers, I would like to discuss an event.") {
   return `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
@@ -313,7 +313,7 @@ function Loader() {
     <div className={`loader ${hidden ? "loader-hidden" : ""}`} aria-hidden={hidden}>
       <div className="loader-mark">V</div>
       <div className="loader-line" />
-      <p>Venus Event & Decor</p>
+      <p>Venus Event & Suppliers</p>
       <span>{progress}%</span>
     </div>
   );
@@ -375,11 +375,11 @@ function Navbar() {
 
   return (
     <header className={`site-nav ${scrolled ? "is-scrolled" : ""}`}>
-      <Link className="brand" href="/" aria-label="Venus Event & Decor home">
+      <Link className="brand" href="/" aria-label="Venus Event & Suppliers home">
         <span>V</span>
         <div>
           <strong>Venus</strong>
-          <small>Event & Decor</small>
+          <small>Event & Suppliers</small>
         </div>
       </Link>
 
@@ -393,7 +393,7 @@ function Navbar() {
 
       <a className="nav-cta magnetic" href="#contact">
         <Icon name="calendar" />
-        Book Event
+        Discuss Your Event
       </a>
 
       <button
@@ -451,24 +451,24 @@ function Hero() {
       <div className="hero-light hero-light-one" />
       <div className="hero-light hero-light-two" />
       <div className="hero-content reveal">
-        <p className="eyebrow">Professional event production house - Indore</p>
+        <p className="eyebrow">A Laxmi Ventures Company</p>
         <h1>
-          We Plan.
-          <span>We Produce.</span>
+          We Create.
+          <span>You Celebrate.</span>
         </h1>
         <p className="hero-subtitle">{contact.secondaryTagline}</p>
         <p className="hero-copy">
-          Venus Event & Decor produces corporate events, exhibitions, Bhagwat and religious programs, conferences,
+          Venus Event & Suppliers produces corporate events, exhibitions, Bhagwat and religious programs, conferences,
           product launches, award functions and institutional events with structured planning and disciplined execution.
         </p>
         <div className="hero-actions">
           <a className="button button-gold magnetic" href="#contact">
             <Icon name="calendar" />
-            Request Event Brief
+            Discuss Your Event
           </a>
           <a className="button button-ghost" href="#portfolio">
             <Icon name="sparkle" />
-            Explore Production Work
+            View Selected Work
           </a>
           <a className="button button-text" href="#videos">
             <Icon name="play" />
@@ -531,10 +531,10 @@ function About() {
         </div>
       </div>
       <div className="about-copy">
-        <p className="eyebrow">About Venus Event & Decor</p>
+        <p className="eyebrow">About Venus Event & Suppliers</p>
         <h2>Producing professional and spiritual events with structure, dignity and visual clarity.</h2>
         <p>
-          Venus Event & Decor is positioned as a production partner for organizations, institutions, brands and
+          Venus Event & Suppliers is positioned as a production partner for organizations, institutions, brands and
           religious committees. Every event surface is shaped around stage visibility, audience flow, technical
           readiness, branding, protocol and a premium finish.
         </p>
@@ -998,7 +998,7 @@ function CTA() {
           <Icon name="phone" />
           Call Us
         </a>
-        <a className="button button-ghost" href={whatsappUrl("Hello Venus Event & Decor, I want to book an event consultation.")}>
+        <a className="button button-ghost" href={whatsappUrl("Hello Venus Event & Suppliers, I want to book an event consultation.")}>
           <Icon name="whatsapp" />
           WhatsApp
         </a>
@@ -1012,6 +1012,7 @@ function ContactForm() {
     name: "",
     phone: "",
     email: "",
+    organization: "",
     eventType: "",
     eventDate: "",
     location: "",
@@ -1039,23 +1040,23 @@ function ContactForm() {
       return;
     }
 
-    setStatus({ type: "loading", message: "Sending your inquiry..." });
-    window.setTimeout(() => {
-      setStatus({ type: "success", message: "Thank you. The Venus team will review your event details and contact you shortly." });
-      setForm({
-        name: "",
-        phone: "",
-        email: "",
-        eventType: "",
-        eventDate: "",
-        location: "",
-        guestCount: "",
-        budget: "",
-        preferredService: "",
-        message: "",
-        consent: false,
-      });
-    }, 650);
+    const details = [
+      "Venus Event & Suppliers — event enquiry",
+      "Name: " + form.name,
+      "Phone: " + form.phone,
+      "Email: " + (form.email || "Not provided"),
+      "Organization: " + (form.organization || "Not provided"),
+      "Event: " + form.eventType,
+      "Date: " + (form.eventDate || "To be discussed"),
+      "Location: " + (form.location || "To be discussed"),
+      "Guest count: " + (form.guestCount || "Not provided"),
+      "Service: " + (form.preferredService || "Not provided"),
+      "Budget: " + (form.budget || "Not provided"),
+      "Message: " + (form.message || "Please contact me"),
+    ];
+    const url = "https://wa.me/" + contact.whatsapp + "?text=" + encodeURIComponent(details.join("\\n"));
+    window.open(url, "_blank", "noopener,noreferrer");
+    setStatus({ type: "success", message: "WhatsApp enquiry prepared. Please press Send in WhatsApp to share it with the Venus team." });
   };
 
   return (
@@ -1074,9 +1075,14 @@ function ContactForm() {
           <input name="email" value={form.email} onChange={update} autoComplete="email" />
         </label>
         <label>
+          Organization
+          <input name="organization" value={form.organization} onChange={update} autoComplete="organization" />
+        </label>
+        <label>
           Event type
           <select name="eventType" value={form.eventType} onChange={update}>
             <option value="">Select event</option>
+            <option value="Cooperative Event">Cooperative Event</option>
             {[
               "Corporate Event",
               "Exhibition",
@@ -1124,7 +1130,7 @@ function ContactForm() {
       </label>
       <button className="button button-gold" type="submit" disabled={status.type === "loading"}>
         <Icon name="calendar" />
-        Request Consultation
+        Continue to WhatsApp
       </button>
       <p className={`form-status ${status.type}`} aria-live="polite">
         {status.message}
@@ -1167,7 +1173,7 @@ function Contact() {
           <a href={contact.instagramUrl} target="_blank" rel="noreferrer">
             <Icon name="instagram" className="contact-card-icon" />
             <span>Instagram</span>
-            <strong>@venusevent01</strong>
+            <strong>@venusevent_1</strong>
           </a>
           <div>
             <Icon name="clock" className="contact-card-icon" />
@@ -1188,7 +1194,7 @@ function Schema() {
     description:
       "Corporate events, exhibitions, religious events, conferences, product launches and institutional event production in Indore.",
     email: contact.email,
-    telephone: [contact.phonePrimary, contact.phoneSecondary],
+    telephone: [contact.phonePrimary, contact.phoneSecondary, contact.phoneThird],
     address: {
       "@type": "PostalAddress",
       addressLocality: "Indore",
@@ -1196,7 +1202,7 @@ function Schema() {
       addressCountry: "IN",
     },
     areaServed: ["Indore", "Madhya Pradesh", "India"],
-    url: "https://venus-event-decor.example",
+    url: "https://satitech-official.github.io/venus-event-decor-premium-website/",
   };
 
   const faqSchema = {
@@ -1229,7 +1235,7 @@ export default function HomeExperience() {
       <Navbar />
       <main>
         <Hero />
-        <Stats />
+        {/* Statistics stay hidden until independently verified. */}
         <About />
         <Services />
         <section className="marquee" aria-label="Luxury event services">
@@ -1245,13 +1251,28 @@ export default function HomeExperience() {
         <Process />
         <BeforeAfter />
         <Videos />
-        <Testimonials />
+        {/* Client notes are hidden until real testimonials are supplied. */}
         <InstagramGallery />
         <FAQ />
         <CTA />
         <Contact />
+        <section className="happigo-panel" id="happigo" aria-label="Our sister concern">
+          <div className="happigo-text">
+            <p className="eyebrow">Our Sister Concern · A Laxmi Ventures Company</p>
+            <h2>Happigo</h2>
+            <h3>Travel &amp; Co-op Experiences</h3>
+            <p>Journeys that connect. Memories that stay.</p>
+            <p>Group travel, cooperative meetings, member retreats and community experiences.</p>
+            {contact.happigoUrl ? (
+              <a className="button button-gold" href={contact.happigoUrl} target="_blank" rel="noopener noreferrer">Explore Happigo ↗</a>
+            ) : (
+              <span className="happigo-unavailable">Happigo website link coming soon</span>
+            )}
+          </div>
+          <div className="happigo-visual"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Friends enjoying a group travel experience" loading="lazy" /></div>
+        </section>
       </main>
-      <a className="whatsapp-float" href={whatsappUrl()} aria-label="Chat with Venus Event & Decor on WhatsApp">
+      <a className="whatsapp-float" href={whatsappUrl()} aria-label="Chat with Venus Event & Suppliers on WhatsApp">
         <Icon name="whatsapp" />
         <span className="sr-only">WhatsApp</span>
       </a>
